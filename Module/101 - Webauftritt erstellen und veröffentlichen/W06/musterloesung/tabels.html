@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Tabellen</title>
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			
+			table.two td {
+				border: 1px solid black;
+				text-align: center;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Tabellen</h1>
+		</header>
+		<main>
+			<h2>einfache Tabelle</h2>
+			<table>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+				</tr>
+			</table>
+			<h2>Stundenplan</h2>
+			<table class="two">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Montag</th>
+						<th scope="col">Dienstag</th>
+						<th scope="col">Mittwoch</th>
+						<th scope="col">Donnerstag</th>
+						<th scope="col">Freitag</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">07:15 - 08:00</th>
+						<td colspan="5">frei</td>
+					</tr>
+					<tr>
+						<th scope="row">08:00 - 09:45</th>
+						<td rowspan="2">Mathe</td>
+						<td rowspan="2">Turnen</td>
+						<td rowspan="2">Deutsch</td>
+						<td>Englisch</td>
+						<td>Schreiben</td>
+					</tr>
+					<tr>
+						<th scope="row">10:15 - 12:00</th>
+						<!-- rowspan -->
+						<!-- rowspan -->
+						<!-- rowspan -->
+						<td>Naturkunde</td>
+						<td>Werken</td>
+					</tr>
+					<tr>
+						<th scope="row">12:00 - 13:30</th>
+						<td colspan="5">Mittag</td>
+					</tr>
+					<tr>
+						<th scope="row">13:30 - 15:15</th>
+						<td>Werken / Gestalten</td>
+						<td>Naturkunde</td>
+						<td rowspan="2">frei</td>
+						<td>Schwimmen</td>
+						<td rowspan="2">frei</td>
+					</tr>
+					<tr>
+						<th scope="row">15:15 - 17:00</th>
+						<td colspan="2">frei</td>
+						<!-- rowspan -->
+						<td>Sport</td>
+						<!-- rowspan -->
+					</tr>
+					<tr>
+						<th scope="row">17:00 - 17:45</th>
+						<td colspan="5">frei</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</main>
+		<footer>
+			<p>© 2015, <a href="mailto:d.brodbeck@gibmit.ch">Daniel Brodbeck</a></p>
+		</footer>
+	</body>
+	
+</html>

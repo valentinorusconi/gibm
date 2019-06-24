@@ -1,0 +1,36 @@
+Die Leistungsbeurteilung 3 ist wie folgt aufgebaut:
+===================================================
+
+- Grundbegriffe verstehen und erklären
+
+- Modellierung eines ERMs. Bei der Bewertung wird besonders auf folgendes geachtet:
+	- Einhaltung der Namenskonvention
+	- Verwendung von sinnvollen Datentypen
+	- Vemeidung von Redundanz (Auslagern von Informationen, die mehrfach vorkommen)
+
+
+
+- Anlegen einer Datenbank direkt aus MySQL Workbench
+
+ mit einem gegebenen ERM
+- Anlegen einer Datenbank direkt aus MySQL Workbench
+
+ mit einem gegebenen .sql-File
+
+- INSERT, UPDATE, DELETE
+
+
+
+- SELECT-Abfragen mit den Teilen SELECT, FROM, WHERE, ORDER BY und LIMIT
+
+
+
+
+Implizit enthalten in den obigen Themen sind auch das Starten von MySQL und 
+das Erstellen einer Verbindung von MySQL Workbench zu MySQL.
+
+
+
+
+Als Hilfsmittel erhalten Sie eine Kopie der Formelsammlung.
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Formulare</title>
+		<meta name="description" content="">
+		<meta name="author" content="Daniel Brodbeck">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	</head>
+
+	<body>
+		<div>
+			<header>
+				<h1>Formular</h1>
+			</header>
+				<form action="formular.php" method="post">
+					<fieldset>
+						<legend>Adresse:</legend>
+						<div>
+							<label>Anrede *</label><br />
+							<input type="radio" name="anrede" value="m" id="male" required>
+							<label for="male">männlich</label>
+							<input type="radio" name="anrede" value="w" id="female" required>
+							<label for="female">weiblich</label>
+							<input type="radio" name="anrede" value="x" id="anderes" required>
+							<label for="anderes">Anderes</label>
+						</div>
+						<div>
+							<label for="vorname">Vorname *</label><br />
+							<input type="text" name="vorname" id="vorname" required/>
+						</div>
+						<div>
+							<label for="nachname">Nachname *</label><br />
+							<input type="text" name="nachname" id="nachname" required/>
+						</div>
+						<div>
+							<label for="strasse">Strasse</label><br />
+							<input type="text" name="strasse" id="strasse" />
+						</div>
+						<div>
+							<label for="plz">PLZ /</label><label for="ort"> Ort</label><br />
+							<input type="number" name="plz" id="plz" min="1" max="9999" />
+							<input type="text" name="ort" id="ort" />
+						</div>
+						<div>
+							<label for="land">Land *</label><br />
+							<select name="land" id="land" required>
+								<option value="">Ihre Auswahl...</option>
+								<option value="ch">Schweiz</option>
+								<option value="de">Deutschland</option>
+								<option value="fr">Frankreich</option>
+								<option value="au">Östereich</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Kontakt:</legend>
+						<div>
+							<label for="telefon">Telefon *</label><br />
+							<input type="tel" name="telefon" id="telefon" required/>
+						</div>
+						<div>
+							<label for="email">Email *</label><br />
+							<input type="email" name="email" id="email" required/>
+						</div>
+						<div>
+							<label for="url">URL</label><br />
+							<input type="url" name="url" id="url" />
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Persönliche Angaben</legend>
+						<div>
+							<label>Hobbies</label><br />
+							<input type="checkbox" name="hobbies[]" id="basketball" value="basketball" />
+							<label for="basektball">Basketball</label>
+							<input type="checkbox" name="hobbies[]" id="fussball" value="fussball" />
+							<label for="fussball">Fussball</label>
+							<input type="checkbox" name="hobbies[]" id="eishockey" value="eishockey" />
+							<label for="eishockey">Eishockey</label>
+							<input type="checkbox" name="hobbies[]" id="sonstiges" value="anderes" />
+							<label for="sonstiges">Anderes</label><br />
+						</div>
+						<div>
+							<label for="bemerkungen">Bemerkungen</label><br />
+							<textarea name="bemerkungen" id="bemerkungen" cols="20" rows="4"></textarea>
+						</div>
+					</fieldset>
+					<fieldset>
+						<input type="reset" value="Löschen">
+						<input type="submit" value="Senden">
+					</fieldset>
+				</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+{
+	"produkte":
+		[
+			{"id": 1,"kategorie":"rind","titel":"Mischpaket Rindfleisch 10 - 12 kg","beschreibung":"Ein Mischpaket enthält von allem, was uns das Rind gibt. In der Regel ist ein Mischpaket 10 - 12 kg schwer.", "preis":340.00, "bild":"images/rind_mischpaket.jpg"},
+			{"id": 2,"kategorie":"rind","titel":"Rindfilet","beschreibung":"Das Filet ist äusserst zart und ein absoluter Leckerbissen!", "preis":80.00, "bild":"images/rind_filet.jpg"},
+			{"id": 3,"kategorie":"kaninchen","titel":"Ganzes Kaninchen, zerlegt","beschreibung":"Ein ganzes Kaninchen, zerlegt und zum einfrieren vorbereitet.", "preis":55.00, "bild":"images/kaninchen_zerlegt.jpg"},
+			{"id": 4,"kategorie":"kaninchen","titel":"Kaninchen Würste","beschreibung":"Selbstgemachte, geräucherte Kaninchenwürste. Preis pro Paar.", "preis":34.00, "bild":"images/kaninchen_wuerste.jpg"},
+			{"id": 5,"kategorie":"pflanzlich","titel":"Bienenhonig","beschreibung":"Feinster Schweizer Bienenhonig von unseren eigenen Bienen. Im Glas zu 500g.", "preis":10.00, "bild":"images/honig.jpg"},
+			{"id": 6,"kategorie":"pflanzlich","titel":"Apfelmost","beschreibung":"Selbstgepresster Apfelmost aus unseren eigenen Äpfel. Im der praktischen 10 Liter Box.", "preis":14.00, "bild":"images/most.jpg"}
+		]
+}

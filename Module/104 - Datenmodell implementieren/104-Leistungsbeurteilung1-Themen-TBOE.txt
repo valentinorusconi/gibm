@@ -1,0 +1,11 @@
+
+Der Test ist wie folgt aufgebaut:
+=================================
+
+- Verständnisfragen, z.B. Primärschlüssel / Fremdschlüssel
+
+- ERM erstellen inklusive...
+	...Attributen
+	...korrekten Datentypen
+	...korrekten Beziehungen
+	...beschrifteten Beziehungen
