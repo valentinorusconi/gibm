@@ -1,0 +1,52 @@
+.btn-primary {
+	background-color: #00336B;
+	border-color: #00336B;
+	color: white !important;
+}
+.loadScreen {
+  position: absolute;
+  z-index: -1000;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
+  height: 90vh;
+  white-space: nowrap;
+}
+.dashloader {
+	width: 70% !important;
+}
+.loadScreen img {
+  vertical-align: middle;
+}
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.table-responsive td {
+	vertical-align: middle;
+}
+.card {
+	padding: 10px;
+}
+.fa-star {
+    color: #F4D000;
+}
+.loadScreen.dashloader {
+    opacity: 0;
+}
+#error {
+    display: none;
+    min-height: 55px;
+}
+#pageContent {
+    display: none;
+}
+.col-lg-1 > span {
+    font-size: 50px;
+}
+
+.col-lg-12 > hr {
+    margin-top: 0;
+}

@@ -1,0 +1,298 @@
+<style>
+    body, html {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    }
+
+    .card-container.card {
+        max-width: 350px;
+        padding: 40px 40px;
+    }
+
+    .btn {
+        font-weight: 700;
+        height: 36px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+    }
+
+    /*
+    * Card component
+    */
+    .card {
+        background-color: #F7F7F7;
+        /* just in case there no content*/
+        padding: 20px 25px 30px;
+        margin: 0 auto 25px;
+        margin-top: 50px;
+        /* shadows and rounded borders */
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-img-card {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 10px;
+        display: block;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    /*
+    * Form styles
+    */
+    .profile-name-card {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 0 0;
+        min-height: 1em;
+    }
+
+    .reauth-email {
+        display: block;
+        color: #404040;
+        line-height: 2;
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .form-signin #inputEmail,
+    .form-signin #inputPassword {
+        direction: ltr;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .form-signin input[type=email],
+    .form-signin input[type=password],
+    .form-signin input[type=text],
+    .form-signin button {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        z-index: 1;
+        position: relative;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .form-signin .form-control:focus {
+        border-color: rgb(104, 145, 162);
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    }
+
+    .btn.btn-signin {
+        /*background-color: #4d90fe; */
+        background-color: rgb(104, 145, 162);
+        /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+        padding: 0px;
+        font-weight: 700;
+        font-size: 14px;
+        height: 36px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: none;
+        -o-transition: all 0.218s;
+        -moz-transition: all 0.218s;
+        -webkit-transition: all 0.218s;
+        transition: all 0.218s;
+    }
+
+    .btn.btn-signin:hover,
+    .btn.btn-signin:active,
+    .btn.btn-signin:focus {
+        background-color: rgb(12, 97, 33);
+    }
+
+    .forgot-password {
+        color: rgb(104, 145, 162);
+    }
+
+    .forgot-password:hover,
+    .forgot-password:active,
+    .forgot-password:focus{
+        color: rgb(12, 97, 33);
+    }
+</style>
+
+<div class="card card-container">
+
+
+    <div class="form-group">
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus><br />
+        <input type="password" id="inputPassword" class="form-control" placeholder="Passwort" required><br />
+        <button class="btn btn-lg btn-primary btn-block btn-signin" onclick="tryLogin();">Einloggen</button><br />
+
+        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#resetModal">
+            Passwort vergessen?
+        </button>
+    </div>
+
+
+    <!-- Reset PW Modal -->
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Passwort zurücksetzen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <p>
+                                Wir werden dir per E-Mail einen Link zum zurücksetzen deines Passwortes senden.
+                                Bitte teile uns dafür anschliessend die E-Mail Adresse mit, welche du für dein
+                                Profil auf dieser Seite nutzt.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">E-Mail Adresse</label>
+                                <input type="email" class="form-control" id="forgotPassMail" aria-describedby="emailHelp" placeholder="mail@demo.com">
+                                <small id="emailHelp" class="form-text text-muted">Deine Daten werden stehts vertraulich behandelt.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" onclick="requestReset();">Abschicken</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change PW Modal -->
+    <div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Neues Passwort setzen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <p>
+                                Gebe hier deine E-Mail und dein neues Passwort ein (Mindestlänge 8 Zeichen):
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="chaauserMail" aria-describedby="emailHelp" placeholder="Deine E-Mail Adresse"><br />
+                                <input type="password" class="form-control" id="newPassword" aria-describedby="emailHelp" placeholder="Neues Passwort">
+                                <input type="password" class="form-control" id="newPasswordRepeat" aria-describedby="emailHelp" placeholder="Passwort wiederholen">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" onclick="changePassword();">Passwort ändern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    function login(username, passwort){
+        if(username.length <= 0 || passwort.length < 8){
+            alert('E-Mail oder Benutzername falsch.', 'danger');
+        } else {
+            set_call('user/login',{email: username, pw: passwort},function(data){
+                if(data !== false){
+                    remove_alert('danger');
+                    userName = data['username'];
+                    userGroup = data['usergroup'];
+                    startup();
+                    alert('Erfolgreich eingeloggt!');
+                } else {
+                    alert('E-Mail oder Benutzername falsch.', 'danger');
+                }
+            });
+        }
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    function tryLogin(){
+        var email = $('#inputEmail').val();
+        var password = $('#inputPassword').val();
+        login(email, password);
+    }
+
+    function requestReset(){
+        var email = $('#forgotPassMail').val();
+        if(email.length > 0){
+            set_call('user/requestReset', {email: email}, function(){});
+            $('#resetModal').modal('hide');
+            alert('Falls sich deine Adresse in unserem System befindet, haben wir dir eine Nachricht gesendet.');
+        } else {
+            alert('Bitte E-Mail angeben.', 'danger');
+        }
+    }
+
+    function changePassword(){
+        var newPass = $('#newPassword').val();
+        var newPassRepeat = $('#newPasswordRepeat').val();
+        var userMail = $('#chaauserMail').val();
+        var token = getParameterByName('tok', url_string);
+
+        if(newPass !== newPassRepeat || newPass.length < 8){
+            alert('Passwörter stimmen nicht überein oder nicht genug lang/komplex.', 'danger');
+        } else {
+            set_call('user/changePassword', {newPass: newPass, token:token, email: userMail}, function(data){
+                if(data === true){
+                    $('#changePassModal').modal('hide');
+                    resetRequest = false;
+                    alert('Passwort wurde geändert. Du kannst dich nun damit einloggen.');
+                } else {
+                    alert('Fehler beim Ändern. Stimmt die Länge/Komplexität des Passwortes? Falls ja, wende dich an einen Admin.', 'danger');
+                }
+            });
+        }
+
+    }
+
+    if(resetRequest){
+        $('#changePassModal').modal('show');
+    }
+
+</script>

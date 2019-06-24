@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Search for Images">
+        <meta name="author" content="Reutlinger & Rusconi">
+        <title>Steepr</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- Custom fonts for this template -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+        <!-- Custom styles for this template -->
+        <link href="vendor/css/landing-page.min.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Steepr</a>
+                <a class="btn btn-primary" href="include/upload.html">Upload</a>
+            </div>
+        </nav>
+
+        <!-- Small Search Form -->
+        <header class="text-center" id="smallSearch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-10 mx-auto">
+                        <div class="form-row">
+                            <div class="col-12 col-md-6 mb-2 mb-md-0">
+                                <input type="text" class="form-control" id="smallSearchInput" placeholder="Search for Tags...">
+                            </div><br/><br />
+                            <div class="col-12 col-md-3">
+                                <select class="form-control" id="smallSearchSorting">
+                                    <option disabled>Order by</option>
+                                    <option value="recent">Most Recent</option>
+                                    <option value="viewed">Most Viewed</option>
+                                    <option value="rated">Best Rated</option>
+                                </select>
+                            </div><br/><br />
+                            <div class="col-12 col-md-3">
+                                <button type="button" class="btn btn-block btn-primary searchButtons">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Big Search Form -->
+        <header class="masthead text-center" id="bigSearch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <h1 class="mb-5 bigTitle">Search for Images</h1>
+                    </div>
+                    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                        <div class="form-row">
+                            <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                <input type="text" class="form-control form-control-lg" id="bigSearchInput" placeholder="Search for Tags...">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <button type="button" class="btn btn-block btn-lg btn-primary searchButtons">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Small Title Area -->
+        <section class="features-icons bg-light text-center" id="titleSection">
+            <div class="container">
+                <div class="row text-center">
+
+                    <div class="col-lg-12">
+
+                        <!-- Alerts -->
+                        <div class="alert alert-danger alert-dismissible" id="errorAlert" style="display:none;">
+                            <a href="#" class="close" data-dismiss="" aria-label="close">&times;</a>
+                            <span id="errorText"></span>
+                        </div>
+                        <div class="alert alert-success alert-dismissible" id="successAlert" style="display:none;">
+                            <a href="#" class="close" data-dismiss="" aria-label="close">&times;</a>
+                            <span id="successText"></span>
+                        </div>
+
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <h2 id="searchQuery">The most recent Uploads:</h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="pictureModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="m_titleHead"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row" id="mv_rate" style="display:none;">
+                                <div class="col-12 text-center">
+                                    <h2>Rate Image</h2>
+                                </div>
+                                <div class="col-12 text-center" id="m_ratingStars">
+                                    <i class="far fa-star fa-5x rateStar"></i>
+                                    <i class="far fa-star fa-5x rateStar"></i>
+                                    <i class="far fa-star fa-5x rateStar"></i>
+                                    <i class="far fa-star fa-5x rateStar"></i>
+                                    <i class="far fa-star fa-5x rateStar"></i>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <br />
+                                    <button id="m_sendRating" type="button" class="btn btn-warning">Submit</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                            <div class="row" id="mv_detailed">
+                                <div class="col-12">
+                                    <img id="m_image" class="img-fluid" src=""/>
+                                </div>
+                                <div class="col-12">
+                                    <h1 id="m_title"></h1>
+                                </div>
+                                <div class="col-12">
+                                    <p id="m_description"></p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <b>Views</b> <span id="m_views"></span>
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    <b>Date</b> <span id="m_date"></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <b>Tags</b> <span id="m_tags"></span>
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    <b>Rating</b>
+                                    <i class="fas fa-star" id="faStar1"></i>
+                                    <i class="fas fa-star" id="faStar2"></i>
+                                    <i class="fas fa-star" id="faStar3"></i>
+                                    <i class="fas fa-star" id="faStar4"></i>
+                                    <i class="fas fa-star" id="faStar5"></i>
+                                    <span id="m_rating_full">(2.89)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="m_ratePic" type="button" class="btn btn-warning">Rate</button>
+                        <a id="m_downloadOriginal" class="btn btn-primary">Download Original</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery -->
+        <section class="showcase">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters" id="galleryContainer">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 h-100 text-center text-lg-left my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item">
+                                <a href="#">About</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Steepr</p>
+                    </div>
+                    <div class="col-lg-4 h-100 text-center my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mr-3">
+                                <a href="" id="previousPage">
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item mr-3">
+                                <a href="" id="currentSector">
+
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" id="nextPage">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 h-100 text-center text-lg-right my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mr-3">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item mr-3">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+
+        <!-- Engine Scripts -->
+        <script src="js/gallery.js"></script>
+        <script src="include/getUrlParams.min.js"></script>
+        <script src="js/index.js"></script>
+
+    </body>
+</html>

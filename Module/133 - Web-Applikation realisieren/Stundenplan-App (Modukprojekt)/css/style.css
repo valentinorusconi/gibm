@@ -1,0 +1,53 @@
+body {
+    padding-top: 54px;
+}
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+#klassenauswahl {
+	opacity: 0;
+}
+.agenda {  }
+
+/* Dates */
+.agenda .agenda-date { width: 170px; }
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em; 
+}
+
+
+/* Times */
+.agenda .agenda-time { width: 140px; } 
+
+
+/* Events */
+.agenda .agenda-events {  } 
+.agenda .agenda-events .agenda-event {  } 
+
+@media (max-width: 767px) {
+    
+}
+.weekchanger {
+	opacity: 0;
+	margin-left: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: auto;
+	max-width: 500px;
+}
+.weekchangerDate {
+	font-size: large;
+}
+#kalender_tafel {
+	opacity: 0;
+}

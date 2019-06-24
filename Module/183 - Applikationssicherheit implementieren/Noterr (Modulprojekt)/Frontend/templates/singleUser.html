@@ -1,0 +1,13 @@
+{{#users}}
+<div class="card col-12">
+    <div class="card-body">
+        <h5 class="card-title">{{email}}</h5>
+        <p class="card-text">Gruppe: {{group}}</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" editUserID="{{id}}" data-target="#editGroupModal">
+            Gruppe bearbeiten
+        </button>
+        <a href="#" onclick="deleteUser({{id}})" class="btn btn-danger">Benutzer löschen</a>
+    </div>
+</div>
+<br />
+{{/users}}

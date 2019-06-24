@@ -1,0 +1,17 @@
+body {
+    padding-top: 54px;
+}
+
+#success_alert, #danger_alert {
+    display: none;
+    position: relative;
+    z-index: 9999;
+    left: 0;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}

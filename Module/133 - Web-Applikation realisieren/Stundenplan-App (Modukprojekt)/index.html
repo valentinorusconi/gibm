@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Stundenplan der GIBM">
+	<meta name="author" content="Elia Reutlinger">
+
+	<title>Stundenplan Gibm</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+	<!-- Custom styles for this site -->
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Stundenplan</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Nach Fachrichtung
+                <span class="sr-only">(current)</span>
+              </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Live</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Impressum</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h1 class="mt-5">Gibm Stundenplan</h1>
+				<p class="lead">Nach Fachrichtung</p>
+				<div id="stundenplan">
+					<div class="form-group">
+						<label for="b_auswahl">Berufsgruppe</label>
+						<select class="form-control" id="b_auswahl">
+							<option value="">Bitte auswählen</option>
+						</select>
+					</div>
+					<div class="form-group" id="klassenauswahl">
+						<label for="k_auswahl">Klassenauswahl</label>
+						<select class="form-control" id="k_auswahl">
+						</select>
+					</div>
+					
+					<div class="weekchanger weekchangerBefore"><button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-arrow-left"></span> Vorherige Woche</button></div>
+					<div class="weekchanger weekchangerDate"><b>Kalenderwoche: <div id="weekchangerDateNum">43-2016</div></b></div>
+					<div class="weekchanger weekchangerNext"><button type="button" class="btn btn-default btn-block">Nächste Woche <span class="glyphicon glyphicon-arrow-right"></span></button></div>
+					
+					<div id="kalender_tafel">
+						 <div class="agenda">
+							<div class="table-responsive">
+								<table class="table table-condensed table-bordered">
+									<thead>
+										<tr>
+											<th>Datum</th>
+											<th>Zeit</th>
+											<th>Fach</th>
+											<th>Raum</th>
+											<th>Lehrer</th>
+										</tr>
+									</thead>
+									<tbody id="tafel_content">
+										
+										<!-- Single event in a single day -->
+										<tr>
+											<td class="agenda-date" class="active" rowspan="1">
+												<div class="dayofmonth">26</div>
+												<div class="dayofweek">Saturday</div>
+												<div class="shortdate text-muted">July, 2014</div>
+											</td>
+											<td class="agenda-time">
+												8:00 - 9:00 AM 
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Doctor's Appointment
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													1.7
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Herr Jojo
+												</div>
+											</td>
+										</tr>
+										
+										
+										
+										<!-- Multiple events in a single day (note the rowspan) -->
+										<tr>
+											<td class="agenda-date" class="active" rowspan="5">
+												<div class="dayofmonth">24</div>
+												<div class="dayofweek">Thursday</div>
+												<div class="shortdate text-muted">July, 2014</div>
+											</td>
+										</tr>
+										
+										<tr>
+											<td class="agenda-time">
+												8:00 - 9:00 AM 
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Doctor's Appointment
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													1.7
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Herr Jojo
+												</div>
+											</td>
+										</tr>
+										
+										<tr>
+											<td class="agenda-time">
+												10:15 AM - 12:00 PM 
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Meeting with executives
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													0.5
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Baba
+												</div>
+											</td>
+										</tr>
+										
+										<tr>
+											<td class="agenda-time">
+												7:00 - 9:00 PM
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Aria's dance recital
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													9.4
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Alibaba
+												</div>
+											</td>
+										</tr>
+										
+										<tr>
+											<td class="agenda-time">
+												7:00 - 9:00 PM
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Lel
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													2.2
+												</div>
+											</td>
+											<td class="agenda-events">
+												<div class="agenda-event">
+													Herr Fuuuu
+												</div>
+											</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+	<!-- Scripts for this Site -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+
+</html>

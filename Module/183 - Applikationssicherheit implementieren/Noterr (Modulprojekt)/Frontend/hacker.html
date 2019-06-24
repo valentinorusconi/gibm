@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Elia Reutlinger">
+
+    <title>I'm a Hacker</title>
+
+</head>
+
+<body>
+
+    <h1>Hacker-Interface</h1>
+    <p>
+        Funktionen testen, ohne dass man die Berechtigungen dazu hat. Die Ausführung wird im Frontend nicht validiert.<br />
+        Um diese Funktionen ausführen zu können, bräuchte ein Hacker mindestens die korrekten Datei-Pfade und entsprechenden IDs.<br />
+        Alle unberechtigten Anfragen (wenn keine Session mit genügend Rechten besteht) werden 'false' ausgeben.
+    </p>
+    <hr/>
+    <h2>Antwort vom Server:</h2>
+    <textarea id="hackResponse"></textarea>
+    <hr/>
+    <h2>Aktionen:</h2>
+
+    <p>Benutzergruppe auf Admin ändern:</p>
+    <input type="number" placeholder="Benutzer-ID" id="makeAdminNumber"/>
+    <button onclick="makeAdmin();">Gruppe Ändern</button>
+
+    <p>Benutzer löschen:</p>
+    <input type="number" placeholder="Benutzer-ID" id="deleteUserNum"/>
+    <button onclick="deleteUser();">Löschen</button>
+
+    <p>Notiz löschen:</p>
+    <input type="number" placeholder="Notiz-ID" id="deleteNoteID"/>
+    <button onclick="deleteNote();">Notiz löschen</button>
+
+    <p>Notiz freigeben:</p>
+    <input type="number" placeholder="Notiz-ID" id="addShareNote"/>
+    <input type="email" placeholder="Benutzer E-Mail" id="addShareUser"/>
+    <button onclick="addHackedShare();">Notiz freigeben</button>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</body>
+
+<script>
+
+    function makeAdmin(){
+        var userid = $('#makeAdminNumber').val();
+        $.ajax({
+            type: 'POST',
+            data: {userid: userid, group: 2},
+            url: '../Backend/set/admin/saveGroup.php',
+            success: function(resp) {
+                document.getElementById('hackResponse').innerHTML = resp;
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+    function deleteUser(){
+        var userid = $('#deleteUserNum').val();
+        $.ajax({
+            type: 'POST',
+            data: {userid: userid},
+            url: '../Backend/set/admin/deleteUser.php',
+            success: function(resp) {
+                document.getElementById('hackResponse').innerHTML = resp;
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+    function deleteNote(){
+        var noteid = $('#deleteNoteID').val();
+        $.ajax({
+            type: 'POST',
+            data: {id: noteid},
+            url: '../Backend/set/notes/deleteNote.php',
+            success: function(resp) {
+                document.getElementById('hackResponse').innerHTML = resp;
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+    function addHackedShare(){
+        var noteid = $('#addShareNote').val();
+        var usermail = $('#addShareUser').val();
+        $.ajax({
+            type: 'POST',
+            data: {id: noteid, email: usermail},
+            url: '../Backend/set/notes/addShare.php',
+            success: function(resp) {
+                document.getElementById('hackResponse').innerHTML = resp;
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+</script>
+
+</html>

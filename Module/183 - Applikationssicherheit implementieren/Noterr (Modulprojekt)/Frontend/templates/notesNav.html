@@ -1,0 +1,20 @@
+<!-- Liste mit Notizen -->
+<div class="col-lg-3" id="notesNav">
+    <h1 class="my-4">Notizen</h1>
+    <div class="list-group">
+        {{#notes}}
+            <a href="#" onclick="openNote({{id}});" class="list-group-item">{{title}}</a>
+        {{/notes}}
+            <div class="list-group-item">
+                <div class="row">
+                    <div class="col-10" style="padding-left: 0px;">
+                        <input class="form-control" id="newNoteTitle" type="text" />
+                    </div>
+                    <div class="col-2" style="padding: 0px;">
+                        <button type="button" class="btn btn-success" onclick="addNote()"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- Liste mit Notizen ENDE -->

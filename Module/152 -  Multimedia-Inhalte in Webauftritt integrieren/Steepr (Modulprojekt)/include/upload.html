@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Search for Images">
+        <meta name="author" content="Reutlinger & Rusconi">
+
+        <title>Steepr</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- Custom fonts for this template -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+        <!-- Custom styles for this template -->
+        <link href="../vendor/css/landing-page.min.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Steepr</a>
+                <a class="btn btn-primary" href="../index.html">Search</a>
+            </div>
+        </nav>
+
+        <!-- Small Title Area and Upload Form -->
+        <section class="upload-formula bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <h3>Contribute your Image</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form action="../call/upload.php" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-lg-6">
+
+                                    <div class="form-group row">
+                                        <label class="col-2 col-form-label"></label>
+                                        <div class="col-10">
+                                            <input class="form-control" type="hidden">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="f_title" class="col-2 col-form-label">Title</label>
+                                        <div class="col-10">
+                                            <input class="form-control" type="text" placeholder="Beautiful Szenery" name="f_title" id="f_title">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="f_tags" class="col-2 col-form-label">Tags</label>
+                                        <div class="col-10">
+                                            <input class="form-control" type="text" placeholder="landscape, forest,...  (Seperate by , - Max. 20)" name="f_tags" id="f_tags">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="f_upload" class="custom-file-upload" id="file-upload-label">
+                                            <i class="fas fa-upload"></i> Select Image
+                                        </label>
+                                        <input id="f_upload" name="f_upload" type="file" required/>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+
+                                    <div class="form-group text-center">
+                                        <label for="f_description">Description</label>
+                                        <textarea class="form-control" rows="6" name="f_description" id="f_description" placeholder="This beautiful scenery was shot when I was..."></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Alerts -->
+                            <div class="alert alert-danger alert-dismissible" id="errorAlert" style="display:none;">
+                                <a href="#" class="close" data-dismiss="" aria-label="close">&times;</a>
+                                <span id="errorText"></span>
+                            </div>
+                            <div class="alert alert-success alert-dismissible" id="successAlert" style="display:none;">
+                                <a href="#" class="close" data-dismiss="" aria-label="close">&times;</a>
+                                <span id="successText"></span>
+                            </div>
+
+                            <div class="form-group row">
+                                <input class="btn btn-primary btn-block" type="submit" value="Upload"/>
+                            </div>
+
+                            <p>Format: JPG/PNG<br />Check your php.ini Settings (post_max_size & upload_max_filesize) to get your Max-allowed upload-filesize.</p>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item">
+                                <a href="#">About</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Contact</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Terms of Use</a>
+                            </li>
+                            <li class="list-inline-item">&sdot;</li>
+                            <li class="list-inline-item">
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mr-3">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item mr-3">
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+
+        <script src="../include/getUrlParams.min.js"></script>
+        <script src="../js/upload.js"></script>
+
+    </body>
+</html>

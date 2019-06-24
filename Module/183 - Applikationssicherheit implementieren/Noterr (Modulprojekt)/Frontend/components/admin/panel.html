@@ -1,0 +1,241 @@
+<!-- Admin-View -->
+<div class="container">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <div class="row">
+
+        <!-- EditGroup-Modal -->
+        <div class="modal fade" id="editGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Gruppe bearbeiten</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <select class="form-control" id="newGroupSelect">
+                            <option disabled>Neue Gruppe wählen:</option>
+                            <option value="1">Benutzer</option>
+                            <option value="2">Admin</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                        <button type="button" class="btn btn-primary" onclick="saveGroup()">Speichern</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- EditGroup-Modal ENDE-->
+
+        <!-- SideNav -->
+        <div class="col-lg-3" id="notesNav">
+            <h1 class="my-4">Admin</h1>
+            <div class="list-group">
+                <a onclick="UIshowUsers()" class="list-group-item">Benutzer</a>
+                <a onclick="UIshowLogs()" class="list-group-item">Logs</a>
+            </div>
+        </div>
+        <!-- SideNav ENDE-->
+
+        <div class="col-lg-9">
+
+            <!-- Userlist -->
+            <div id="admin_users">
+                <h3 class="my-4">Benutzer</h3>
+                <div class="row">
+                    <div class="col-12" id="userlist">
+
+                    </div>
+                </div>
+            </div>
+            <!-- Userlist ENDE-->
+
+            <!-- Userlist -->
+            <div id="logLevelInfo" style="display:none;">
+                <div class="row">
+                    <div class="col-12" id="userlist">
+                        <h4 class="my-4">Log-Levels:</h4>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Key</th>
+                                    <th scope="col">Typ</th>
+                                    <th scope="col">Beschreibung</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-danger">
+                                    <th scope="row">1</th>
+                                    <td>FATAL</td>
+                                    <td>Hier ist etwas richtig schlimmes passiert. Dabei könnte die Anwendung zu Schaden gehen.</td>
+                                </tr>
+                                <tr class="table-secondary">
+                                    <th scope="row">2</th>
+                                    <td>ERROR</td>
+                                    <td>Hier ist auch was schlechtes geschehen. Jedoch sollte es nicht der Anwendung schaden.</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <th scope="row">3</th>
+                                    <td>WARN</td>
+                                    <td>Hier könnte sich etwas schlechtes entwickeln. Vielleicht sollte man das mal genauer betrachten.</td>
+                                </tr>
+                                <tr class="table-info">
+                                    <th scope="row">4</th>
+                                    <td>INFO</td>
+                                    <td>Muss nicht umbedingt ein Fehler sein. Es soll einfach geloggt werden, was so geschieht</td>
+                                </tr>
+                                <tr class="table-dark">
+                                    <th scope="row">5</th>
+                                    <td>DEBUG</td>
+                                    <td>Hier könnten diagnostische Informationen geloggt werden, welche für die spätere Entwicklung von Vorteil sein können.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Userlist ENDE-->
+
+        </div>
+
+        <div class="col-12">
+            <!-- Logs -->
+            <div id="admin_logs" style="display:none;">
+                <div class="row">
+                    <h4 class="my-4">Logs</h3>
+                    <div class="col-12" id="logs">
+                        <table id="logTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Zeitpunkt</th>
+                                    <th>Benutzer</th>
+                                    <th>Level</th>
+                                    <th>Aktion</th>
+                                    <th>IP</th>
+                                    <th>URL</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logEntries">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Logs ENDE-->
+        </div>
+
+    </div>
+</div>
+<!-- Admin-View ENDE -->
+
+<script>
+
+    var editUser = undefined;
+
+    function UIshowLogs(){
+        $('#admin_logs').slideDown('fast');
+        $('#logLevelInfo').slideDown('fast');
+        $('#admin_users').slideUp('fast');
+    }
+
+    function UIshowUsers(){
+        $('#admin_logs').slideUp('fast');
+        $('#logLevelInfo').slideUp('fast');
+        $('#admin_users').slideDown('fast');
+    }
+
+    function saveGroup(){
+        var newGroup = $("#newGroupSelect option:selected").val();
+        if(newGroup.length <= 0 || newGroup > 2 || newGroup < 1){
+            alert('Änderungen konnten nicht gespeichert werden!', 'danger');
+        } else {
+            set_call('admin/saveGroup',{userid: editUser, group: newGroup},function(data){
+                $('#editGroupModal').modal("toggle");
+                if(data !== false){
+                    alert('Änderungen gespeichert!');
+                    buildUserList();
+                } else {
+                    alert('Änderungen konnten nicht gespeichert werden!', 'danger');
+                }
+            });
+        }
+    }
+
+    function deleteUser(userID){
+        if(userID.length <= 0){
+            alert('Änderungen konnten nicht gespeichert werden!', 'danger');
+        } else {
+            set_call('admin/deleteUser',{userid: userID},function(data){
+                if(data !== false || data !== ''){
+                    alert('Änderungen gespeichert!');
+                    buildUserList();
+                } else {
+                    alert('Änderungen konnten nicht gespeichert werden!', 'danger');
+                }
+            });
+        }
+    }
+
+    function buildUserList(){
+        get_call('userlist',{},function(data){
+            if(data !== false){
+                var users = data;
+                $.get('templates/singleUser.html', function(data){
+                    var template = data;
+                    var html = Mustache.to_html(template, {users:users});
+                    $('#userlist').html(html);
+                });
+            } else {
+                alert('Benutzer konnten nicht geladen werden.', 'danger');
+            }
+        });
+    }
+
+    function loadLogs(){
+        get_call('logs',{},function(data){
+            if(data !== false){
+
+
+                var template = '{{#entries}}<tr level="{{level}}"><th scope="row">{{id}}</th><td>{{date}}</td><td>{{email}}</td><td>{{level}}</td><td>{{action}}</td><td>{{ip}}</td><td>{{referer}}</td></tr>{{/entries}}';
+
+                var html = Mustache.to_html(template, {entries: data});
+                $('#logEntries').html(html);
+                $.getScript("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js", function(){
+
+                    $('#logTable').DataTable();
+                });
+                $('#logEntries').children().each(function(){
+                    if($(this).attr('level') == 1){
+                        $(this).addClass('table-danger');
+                    } else if($(this).attr('level') == 2){
+                        $(this).addClass('table-secondary');
+                    } else if($(this).attr('level') == 3){
+                        $(this).addClass('table-warning');
+                    } else if($(this).attr('level') == 4){
+                        $(this).addClass('table-info');
+                    } else {
+                        $(this).addClass('table-dark');
+                    }
+                });
+
+            } else {
+                alert('Logs konnten nicht geladen werden.', 'danger');
+            }
+        });
+    }
+
+    buildUserList();
+    loadLogs();
+
+    $('#editGroupModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        editUser = button.attr('editUserID') // Extract info from data-* attributes
+    });
+
+</script>
